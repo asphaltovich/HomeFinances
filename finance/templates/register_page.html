@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Регистрация</h1>
+
+        <form method="post" action="" class="registration-form">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="fio">ФИО</label>
+                <input type="text" id="fio" name="fio">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="example@yandex.ru">
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Дата рождения</label>
+                <input type="text" id="dob" name="dob" placeholder="ДД.ММ.ГГГГ">
+            </div>
+
+            <div class="form-group">
+                <label for="username">Придумайте логин</label>
+                <input type="text" id="username" name="username">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Придумайте пароль</label>
+                <input type="password" id="password" name="password">
+            </div>
+
+            <div class="button-container">
+                <button type="submit" class="submit-btn">Далее</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

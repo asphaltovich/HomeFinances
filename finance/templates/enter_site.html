@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход</title>
+    <link rel="stylesheet" href="{% static 'styles1.css' %}">
+</head>
+<body>
+    <div class="page">
+        <h1 class="title">Вход</h1>
+
+        <form class="form" method="post" action="">
+            {% csrf_token %}
+
+            <div class="field field--login">
+                <label for="login">Логин</label>
+                <input type="text" id="login" name="login">
+            </div>
+
+            <div class="field field--password">
+                <label for="password">Пароль</label>
+                <input type="password" id="password" name="password">
+            </div>
+
+            <button type="submit" class="btn">Далее</button>
+        </form>
+    </div>
+</body>
+</html>
