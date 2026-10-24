@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подтверждение</title>
+    <link rel="stylesheet" href="{% static 'styles2.css' %}">
+</head>
+<body>
+    <main class="confirmation">
+        <h1>Введите код<br>подтверждения</h1>
+
+        <p class="description">
+            Почти готово! Остался последний шаг<br>
+            Проверим, что это вы?
+        </p>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <label class="code-label" for="code">
+                Введите код подтверждения
+            </label>
+
+            <input
+                class="code-input"
+                id="code"
+                name="code"
+                type="text"
+                inputmode="numeric"
+                autocomplete="one-time-code"
+                maxlength="6"
+                required
+            >
+
+            <button class="submit-button" type="submit">Далее</button>
+        </form>
+    </main>
+</body>
+</html>

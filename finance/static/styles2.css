@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #fff3cc;
+    color: #111;
+    font-family: Arial, sans-serif;
+}
+
+.confirmation {
+    width: 100%;
+    min-height: 100vh;
+    padding: 18px 24px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 400;
+    line-height: 1.25;
+}
+
+.description {
+    margin: 4vh auto 8vh;
+    max-width: 700px;
+    text-align: left;
+    font-size: clamp(20px, 3vw, 32px);
+    line-height: 1.3;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.code-label {
+    margin-bottom: 5vh;
+    font-size: clamp(20px, 3vw, 32px);
+}
+
+.code-input {
+    width: min(35vw, 240px);
+    min-width: 140px;
+    height: 48px;
+    margin-bottom: 7vh;
+    padding: 8px;
+    border: 0;
+    border-radius: 8px;
+    outline-color: #d8c96d;
+    background-color: #eee4c3;
+    font-size: 24px;
+    text-align: center;
+}
+
+.submit-button {
+    min-width: 180px;
+    min-height: 72px;
+    padding: 10px 28px;
+    border: 0;
+    border-radius: 10px;
+    background-color: #f5e47d;
+    color: #111;
+    font-size: clamp(24px, 3vw, 32px);
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #efdc68;
+}

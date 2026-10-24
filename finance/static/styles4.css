@@ -1,0 +1,122 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: #fff4cf;
+  color: #111;
+  font-family: Arial, sans-serif;
+}
+
+.back {
+  position: absolute;
+  top: 10.5vh;
+  left: 2.9vw;
+  color: inherit;
+  font-size: 40px;
+  text-decoration: none;
+}
+
+.form {
+  position: absolute;
+  top: 30.5vh;
+  left: 2.2vw;
+  width: min(1100px, calc(100% - 44px));
+}
+
+select {
+  display: block;
+  width: 416px;
+  height: 46px;
+  margin-bottom: 36px;
+  padding: 2px 6px;
+  border: 2px solid #111;
+  border-radius: 0;
+  background: transparent;
+  font-size: 22px;
+}
+
+label {
+  display: block;
+  margin: 60px 0 16px 20px;
+  font-size: 50px;
+  font-weight: 700;
+}
+
+input {
+  display: block;
+  width: 416px;
+  height: 46px;
+  margin-left: 20px;
+  border: 2px solid #111;
+  border-radius: 6px;
+  background: transparent;
+  font-size: 22px;
+}
+
+.buttons {
+  position: fixed;
+  right: 18.5%;
+  bottom: 14px;
+  left: 17.1%;
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  width: 375px;
+  height: 66px;
+  border: 0;
+  font-size: 48px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cancel {
+  background: #e00000;
+  color: #fff;
+}
+
+.save {
+  background: #4cbd18;
+  color: #111;
+}
+
+.message {
+  margin: 16px 0;
+  color: #287a16;
+}
+
+@media (max-width: 700px) {
+  .back {
+    font-size: 28px;
+  }
+
+  select,
+  input {
+    width: min(416px, 100%);
+  }
+
+  label {
+    font-size: 32px;
+  }
+
+  .buttons {
+    right: 20px;
+    left: 20px;
+  }
+
+  button {
+    width: 44%;
+    height: 48px;
+    font-size: 24px;
+  }
+}
