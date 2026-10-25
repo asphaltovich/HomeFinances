@@ -13,8 +13,14 @@
 
         <p class="description">
             Почти готово! Остался последний шаг<br>
-            Проверим, что это вы?
+            Мы отправили код на <b>{{ email }}</b>
         </p>
+
+        {% if messages %}
+            {% for message in messages %}
+                <p class="message {{ message.tags }}">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
 
         <form method="post">
             {% csrf_token %}
@@ -31,10 +37,16 @@
                 inputmode="numeric"
                 autocomplete="one-time-code"
                 maxlength="6"
+                pattern="\d{6}"
                 required
             >
 
             <button class="submit-button" type="submit">Далее</button>
+        </form>
+
+        <form method="post" action="{% url 'resend_code' %}">
+            {% csrf_token %}
+            <button type="submit" class="resend-button">Отправить код ещё раз</button>
         </form>
     </main>
 </body>

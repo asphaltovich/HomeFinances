@@ -14,14 +14,20 @@
         <form method="post" action="" class="registration-form">
             {% csrf_token %}
 
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="message {{ message.tags }}">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+
             <div class="form-group">
                 <label for="fio">ФИО</label>
-                <input type="text" id="fio" name="fio">
+                <input type="text" id="fio" name="fio" placeholder="Иванов Иван Иванович" required>
             </div>
 
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="example@yandex.ru">
+                <input type="email" id="email" name="email" placeholder="example@yandex.ru" required>
             </div>
 
             <div class="form-group">
@@ -31,12 +37,12 @@
 
             <div class="form-group">
                 <label for="username">Придумайте логин</label>
-                <input type="text" id="username" name="username">
+                <input type="text" id="username" name="username" required>
             </div>
 
             <div class="form-group">
                 <label for="password">Придумайте пароль</label>
-                <input type="password" id="password" name="password">
+                <input type="password" id="password" name="password" required>
             </div>
 
             <div class="button-container">

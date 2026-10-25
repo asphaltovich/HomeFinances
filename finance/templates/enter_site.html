@@ -11,17 +11,36 @@
     <div class="page">
         <h1 class="title">Вход</h1>
 
-        <form class="form" method="post" action="">
+        {% for message in messages %}
+            <div class="{% if message.tags == 'success' %}success{% else %}error{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <form class="form" method="post" action="{% url 'enter_site' %}">
             {% csrf_token %}
+
+            {% if errors.common %}
+                <div class="error">{{ errors.common }}</div>
+            {% endif %}
 
             <div class="field field--login">
                 <label for="login">Логин</label>
-                <input type="text" id="login" name="login">
+                <input type="text" id="login" name="login"
+                       value="{{ login_value }}"
+                       {% if errors.login %}class="input-error"{% endif %}>
+                {% if errors.login %}
+                    <div class="error">{{ errors.login }}</div>
+                {% endif %}
             </div>
 
             <div class="field field--password">
                 <label for="password">Пароль</label>
-                <input type="password" id="password" name="password">
+                <input type="password" id="password" name="password"
+                       {% if errors.password %}class="input-error"{% endif %}>
+                {% if errors.password %}
+                    <div class="error">{{ errors.password }}</div>
+                {% endif %}
             </div>
 
             <button type="submit" class="btn">Далее</button>

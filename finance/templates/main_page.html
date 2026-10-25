@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная</title>
+    <link rel="stylesheet" href="{% static 'styles3.css' %}">
+</head>
+<body>
+    <main class="content">
+        <h1>Хватит гадать, куда делась зарплата</h1>
+
+        <p>
+            С нашим сервисом вы перестанете жить от зарплаты до зарплаты.<br>
+            Вы начнете управлять своими деньгами, а не они — вами.
+        </p>
+
+        <ul>
+            <li>Соберите на первоначальный взнос.</li>
+            <li>Избавьтесь от кредитов и долгов.</li>
+            <li>Создайте капитал для будущего.</li>
+            <li>Ваши цели достижимы, если они просчитаны.</li>
+        </ul>
+    </main>
+
+    <aside class="sidebar">
+        <a class="home-icon" href="#" aria-label="Главная">
+            <img src="{% static 'images/1.png' %}" alt="">
+        </a>
+
+        <nav>
+            <a href="#">Добавить<br>расходы</a>
+            <a href="#">Добавить<br>доходы</a>
+            <a href="#">Отчёт</a>
+            <a href="#">Создать<br>цель</a>
+            <a href="#">Мои<br>цели</a>
+            <a href="#">Профиль</a>
+            <a class="logout" href="#">Выход</a>
+        </nav>
+    </aside>
+</body>
+</html>
