@@ -11,72 +11,78 @@ body {
 
 body {
   min-height: 100vh;
-  background: #fff4cf;
+  background: #fff2cc;
   color: #111;
   font-family: Arial, sans-serif;
 }
 
 .back {
   position: absolute;
-  top: 10.5vh;
-  left: 2.9vw;
+  top: 51px;
+  left: 35px;
   color: inherit;
-  font-size: 40px;
+  font-size: 23px;
   text-decoration: none;
 }
 
 .form {
   position: absolute;
-  top: 30.5vh;
-  left: 2.2vw;
+  top: 155px;
+  left: 26px;
   width: min(1100px, calc(100% - 44px));
 }
 
 select {
   display: block;
-  width: 416px;
-  height: 46px;
-  margin-bottom: 36px;
-  padding: 2px 6px;
+  width: 255px;
+  height: 28px;
+  margin-bottom: 22px;
+  padding: 1px 5px;
   border: 2px solid #111;
   border-radius: 0;
   background: transparent;
-  font-size: 22px;
+  color: #111;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
 }
 
 label {
   display: block;
-  margin: 60px 0 16px 20px;
-  font-size: 50px;
+  margin: 38px 0 8px 13px;
+  font-size: 30px;
   font-weight: 700;
+  line-height: 1.2;
 }
 
 input {
   display: block;
-  width: 416px;
-  height: 46px;
-  margin-left: 20px;
+  width: 255px;
+  height: 28px;
+  margin-left: 13px;
   border: 2px solid #111;
-  border-radius: 6px;
+  border-radius: 5px;
   background: transparent;
-  font-size: 22px;
+  font-size: 15px;
 }
 
 .buttons {
   position: fixed;
-  right: 18.5%;
-  bottom: 14px;
   left: 17.1%;
+  right: 18.5%;
+  bottom: 4px;
   display: flex;
   justify-content: space-between;
 }
 
 button {
-  width: 375px;
-  height: 66px;
+  width: 230px;
+  height: 41px;
   border: 0;
-  font-size: 48px;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  font-size: 30px;
   font-weight: 700;
+  line-height: 1;
   cursor: pointer;
 }
 
@@ -97,16 +103,16 @@ button {
 
 @media (max-width: 700px) {
   .back {
-    font-size: 28px;
+    font-size: 21px;
   }
 
   select,
   input {
-    width: min(416px, 100%);
+    width: min(255px, 100%);
   }
 
   label {
-    font-size: 32px;
+    font-size: 21px;
   }
 
   .buttons {
@@ -116,7 +122,7 @@ button {
 
   button {
     width: 44%;
-    height: 48px;
-    font-size: 24px;
+    height: 36px;
+    font-size: 18px;
   }
 }

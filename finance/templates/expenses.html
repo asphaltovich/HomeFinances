@@ -8,10 +8,12 @@
   <link rel="stylesheet" href="{% static 'styles4.css' %}">
 </head>
 <body>
-  <a class="back" href="/">На главную</a>
+  <a class="back" href="{% url 'main_page' %}">На главную</a>
 
   <main>
-    <form class="form" action="/expenses" method="post">
+    <form class="form" action="{% url 'expenses' %}" method="post">
+      {% csrf_token %}
+
       <select name="wallet" aria-label="Тип кошелька" required>
         <option value="" selected disabled>Выберите тип кошелька...</option>
         <option value="cash">Наличные</option>
@@ -19,35 +21,36 @@
       </select>
 
       <select name="category" aria-label="Категория расходов" required>
-          <option value="" selected disabled>Выберите категорию расходов...</option>
-          <option value="food">Продукты</option>
-          <option value="cafes">Кафе и рестораны</option>
-          <option value="transport">Транспорт</option>
-          <option value="fuel">Топливо</option>
-          <option value="housing">Жильё и аренда</option>
-          <option value="utilities">Коммунальные услуги</option>
-          <option value="shopping">Одежда и обувь</option>
-          <option value="health">Здоровье и лекарства</option>
-          <option value="beauty">Красота и уход</option>
-          <option value="entertainment">Развлечения</option>
-          <option value="subscriptions">Подписки и сервисы</option>
-          <option value="communication">Связь и интернет</option>
-          <option value="education">Образование</option>
-          <option value="travel">Путешествия</option>
-          <option value="children">Дети</option>
-          <option value="pets">Домашние животные</option>
-          <option value="household">Товары для дома</option>
-          <option value="gifts">Подарки и благотворительность</option>
-          <option value="insurance">Страхование</option>
-          <option value="other">Другое</option>
-     </select>
+        <option value="" selected disabled>Выберите категорию расходов...</option>
+        <option value="food">Продукты</option>
+        <option value="cafes">Кафе и рестораны</option>
+        <option value="transport">Транспорт</option>
+        <option value="fuel">Топливо</option>
+        <option value="housing">Жильё и аренда</option>
+        <option value="utilities">Коммунальные услуги</option>
+        <option value="shopping">Одежда и обувь</option>
+        <option value="health">Здоровье и лекарства</option>
+        <option value="beauty">Красота и уход</option>
+        <option value="entertainment">Развлечения</option>
+        <option value="subscriptions">Подписки и сервисы</option>
+        <option value="communication">Связь и интернет</option>
+        <option value="education">Образование</option>
+        <option value="travel">Путешествия</option>
+        <option value="children">Дети</option>
+        <option value="pets">Домашние животные</option>
+        <option value="household">Товары для дома</option>
+        <option value="gifts">Подарки и благотворительность</option>
+        <option value="insurance">Страхование</option>
+        <option value="other">Другое</option>
+      </select>
 
       <label for="amount">Введите сумму ваших расходов в рублях</label>
-      <input id="amount" name="amount" type="number" min="0" step="0.01" required>
+      <input id="amount" name="amount" type="number" inputmode="decimal"
+             min="0.01" max="9999999999.99" step="0.01" required>
 
-      {% if message %}
-        <p class="message">{{ message }}</p>
-      {% endif %}
+      {% for message in messages %}
+        <p class="message {{ message.tags }}">{{ message }}</p>
+      {% endfor %}
 
       <div class="buttons">
         <button class="cancel" type="reset">Отмена</button>

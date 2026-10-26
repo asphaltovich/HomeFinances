@@ -25,18 +25,21 @@
     </main>
 
     <aside class="sidebar">
-        <a class="home-icon" href="#" aria-label="Главная">
+        <a class="home-icon" href="{% url 'main_page' %}" aria-label="Главная">
             <img src="{% static 'images/1.png' %}" alt="">
         </a>
 
         <nav>
-            <a href="#">Добавить<br>расходы</a>
-            <a href="#">Добавить<br>доходы</a>
-            <a href="#">Отчёт</a>
-            <a href="#">Создать<br>цель</a>
-            <a href="#">Мои<br>цели</a>
+            <a href="{% url 'expenses' %}">Добавить<br>расходы</a>
+            <a href="{% url 'income' %}">Добавить<br>доходы</a>
+            <a href="{% url 'report' %}">Отчёт</a>
+            <a href="{% url 'goals' %}">Добавить<br>цель</a>
             <a href="#">Профиль</a>
-            <a class="logout" href="#">Выход</a>
+
+            <form action="{% url 'logout' %}" method="post" class="logout-form">
+                {% csrf_token %}
+                <button class="logout" type="submit">Выход</button>
+            </form>
         </nav>
     </aside>
 </body>

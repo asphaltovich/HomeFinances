@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отчёт</title>
+    <link rel="stylesheet" href="{% static 'styles6.css' %}">
+</head>
+<body>
+
+
+    <main class="dashboard">
+        <section class="summary">
+            <div class="summary-card">
+                <span class="summary-title">Баланс</span>
+                <strong class="summary-value">{{ balance }} ₽</strong>
+            </div>
+            <div class="summary-card">
+                <span class="summary-title">Доходы</span>
+                <strong class="summary-value income">{{ income_total }} ₽</strong>
+            </div>
+            <div class="summary-card">
+                <span class="summary-title">Расходы</span>
+                <strong class="summary-value expense">{{ expense_total }} ₽</strong>
+            </div>
+        </section>
+
+        <section class="transactions">
+            {% for op in operations %}
+                <div class="transaction {{ op.kind }}">
+                    <div class="transaction-info">
+                        <span class="transaction-category">{{ op.category }}</span>
+                        <span class="transaction-meta">{{ op.wallet }} · {{ op.date|date:"d.m.Y" }}</span>
+                    </div>
+                    <strong class="transaction-amount">
+                        {% if op.kind == 'income' %}+{% else %}−{% endif %}{{ op.amount }} ₽
+                    </strong>
+                </div>
+            {% empty %}
+                <p class="empty">Операций пока нет.</p>
+            {% endfor %}
+        </section>
+    </main>
+</body>
+</html>

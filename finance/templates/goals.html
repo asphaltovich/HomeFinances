@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Добавление цели</title>
+  <link rel="stylesheet" href="{% static 'styles7.css' %}">
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1>Добавление цели</h1>
+      <nav>
+        <a href="/" class="home-link">На главную</a>
+      </nav>
+    </header>
+
+    <form id="goal-form" class="goal-form {% if errors %}submitted{% endif %}" method="post">
+      {% csrf_token %}
+      <div class="fields">
+        <div class="field">
+          <label for="goal-name">Название цели</label>
+          <input type="text" id="goal-name" name="name" required maxlength="200"
+                 placeholder=" " value="{{ values.name|default:'' }}">
+          {% if errors.name %}<p class="error">{{ errors.name }}</p>{% endif %}
+        </div>
+
+        <div class="field">
+          <label for="goal-desc">Описание цели</label>
+          <input type="text" id="goal-desc" name="description"
+                 placeholder=" " value="{{ values.description|default:'' }}">
+        </div>
+
+        <div class="field">
+          <label for="goal-sum">Сумма в рублях</label>
+          <input type="number" id="goal-sum" name="target_count" required
+                 min="0.01" step="0.01" inputmode="decimal"
+                 placeholder=" " value="{{ values.target_count|default:'' }}">
+          {% if errors.target_count %}<p class="error">{{ errors.target_count }}</p>{% endif %}
+        </div>
+      </div>
+
+      <button type="submit" class="btn">Добавить цель</button>
+    </form>
+
+    {% if goals %}
+    <ul class="goal-list">
+      {% for goal in goals %}
+        <li>
+          <strong>{{ goal.name }}</strong>
+          <span>{{ goal.description }}</span>
+          <b>{{ goal.target_count }} ₽</b>
+        </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </main>
+</body>
+</html>

@@ -5,14 +5,14 @@
 html {
     min-height: 100%;
     margin: 0;
-    background: #fff4cf;
+    background: #fff2cc;
 }
 
 body {
     min-height: 100vh;
     margin: 0;
     display: flex;
-    background: #fff4cf;
+    background: #fff2cc;
     color: #111;
     font-family: Arial, sans-serif;
 }
@@ -51,7 +51,7 @@ body {
     width: 140px;
     min-height: 100vh;
     padding: 20px 10px;
-    background: #ffe69a;
+    background: #ffe8a8;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -93,4 +93,14 @@ body {
     padding-top: 0;
     color: red;
     font-weight: 700;
+}
+.logout-form { margin: 0; }
+button.logout {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    text-align: inherit;
 }

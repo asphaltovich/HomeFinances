@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Добавить доход</title>
+  <link rel="stylesheet" href="{% static 'styles5.css' %}">
+</head>
+<body>
+  <a class="back" href="{% url 'main_page' %}">На главную</a>
+
+  <main>
+    <form class="form" action="{% url 'income' %}" method="post">
+      {% csrf_token %}
+
+      <select name="wallet" aria-label="Тип кошелька" required>
+        <option value="" disabled {% if not form.wallet %}selected{% endif %}>Выберите тип кошелька...</option>
+        {% for key, name in wallets %}
+          <option value="{{ key }}" {% if key == form.wallet %}selected{% endif %}>{{ name }}</option>
+        {% endfor %}
+      </select>
+
+      <select name="category" aria-label="Категория доходов" required>
+        <option value="" disabled {% if not form.category %}selected{% endif %}>Выберите категорию доходов...</option>
+        {% for key, name in categories %}
+          <option value="{{ key }}" {% if key == form.category %}selected{% endif %}>{{ name }}</option>
+        {% endfor %}
+      </select>
+
+      <label for="amount">Введите сумму ваших доходов в рублях</label>
+      <input id="amount" name="amount" type="number" inputmode="decimal"
+             min="0.01" max="999999999999.99" step="0.01"
+             value="{{ form.amount }}" required>
+
+      {% for message in messages %}
+        <p class="message {{ message.tags }}">{{ message }}</p>
+      {% endfor %}
+
+      <div class="buttons">
+        <a class="cancel" href="{% url 'income' %}">Отмена</a>
+        <button class="save" type="submit">Сохранить</button>
+      </div>
+    </form>
+  </main>
+</body>
+</html>

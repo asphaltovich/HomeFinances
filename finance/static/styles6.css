@@ -5,52 +5,158 @@
 body {
     margin: 0;
     min-height: 100vh;
-    background-color: #fff4cf;
-    font-family: Arial, sans-serif;
+    background-color: #FFF1CC;
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Ссылка не участвует в раскладке, чтобы не сдвигать карточки */
+.back {
+    position: absolute;
+    top: 10px;
+    left: 17px;
+    font-size: 12px;
+    color: #000;
 }
 
 .dashboard {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 17px;
+    padding: 0;
 }
 
+/* Карточки */
 .summary {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    position: relative;
+    display: flex;
+    gap: 23px;
+    padding: 40px 10px 0 17px;
+    margin-bottom: 60px;
 }
 
 .summary-card {
-    min-height: 150px;
-    border-radius: 24px;
-    background-color: #eee4c2;
+    flex: 1;
+    height: 150px;
+    padding: 17px 10px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 28px;
+    background-color: #EADFBB;
 }
 
+.summary-title {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+/* Сумма: ниже заголовка, по центру оставшегося места */
+.summary-value {
+    margin: auto 0;
+    padding-top: 10px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #000;
+}
+
+.summary-value.income  { color: #2e7d32; }
+.summary-value.expense { color: #c62828; }
+
+/* Заголовок «Последние транзакции» (в HTML его нет) */
+.summary::after {
+    content: "Последние транзакции";
+    position: absolute;
+    top: calc(100% + 26px);
+    left: 58px;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #000;
+}
+
+/* Список транзакций */
 .transactions {
-    display: grid;
-    gap: 16px;
-    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+    margin: 0 5px 0 0;
+    padding: 0 10px 0 20px;
+    max-height: 160px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #888 transparent;
 }
 
 .transaction {
-    min-height: 60px;
-    border-radius: 10px;
-    background-color: #eee4c2;
+    flex: 0 0 60px;
+    height: 60px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 9px;
+    background-color: #EADFBB;
+}
+
+.transaction-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.transaction-category {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.transaction-meta {
+    font-size: 12px;
+    color: #555;
+}
+
+.transaction-amount {
+    font-size: 16px;
+}
+
+.transaction.income .transaction-amount  { color: #2e7d32; }
+.transaction.expense .transaction-amount { color: #c62828; }
+
+.empty {
+    margin: 0;
+    font-size: 14px;
+}
+
+.transactions::-webkit-scrollbar {
+    width: 5px;
+}
+
+.transactions::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.transactions::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
 }
 
 @media (max-width: 600px) {
-    .dashboard {
-        padding: 24px 16px;
-    }
-
     .summary {
-        grid-template-columns: 1fr;
+        flex-direction: column;
         gap: 12px;
+        padding: 40px 16px 0;
+        margin-bottom: 60px;
     }
 
     .summary-card {
+        height: auto;
         min-height: 110px;
+    }
+
+    .summary::after {
+        left: 20px;
     }
 }
